@@ -21,8 +21,8 @@ class WordList:
     word_list = sorted(word_list, key=lambda word: len(word[1]), reverse=True)
     return word_list
 
-def read(dict_file, spliter="<br>"):
-  content_list = get_content_list(dict_file, spliter)
+def read(dict_file, spliter="<br>", notitle=False):
+  content_list = get_content_list(dict_file, spliter, notitle)
   words = WordList()
   for content in content_list:
     word_list = parse(content["body"])
@@ -33,5 +33,9 @@ def read(dict_file, spliter="<br>"):
     print("%-5d%-15s%s" % (len(rank[1]), rank[0], ",".join(rank[1])))
 
 if __name__ == "__main__":
+  print("----------------------------------------")
   read("xinqiji.txt")
+  print("----------------------------------------")
   read("libai.txt", "<p>")
+  print("----------------------------------------")
+  read("shijing.txt", "[]", True)

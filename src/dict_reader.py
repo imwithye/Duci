@@ -3,7 +3,7 @@
 
 import os
 
-def get_content_list(dict_file, spliter="<br>"):
+def get_content_list(dict_file, spliter="<br>", notitle=False):
   input = os.path.join(os.path.dirname(os.path.realpath(__file__)), dict_file)
   content_file = open(input)
   content = content_file.read().decode("utf-8")
@@ -15,9 +15,12 @@ def get_content_list(dict_file, spliter="<br>"):
     content_split = content_item.splitlines()
     if len(content_split) < 2:
       continue
-    title = content_split[0].strip().encode("utf-8")
-    body = []
-    for i in range(1, len(content_split)):
-      body.append(content_split[i].strip().encode("utf-8"))
-    re.append({"title": title, "body": body})
+    if not notitle:
+      title = content_split[0].strip().encode("utf-8")
+      body = []
+      for i in range(1, len(content_split)):
+        body.append(content_split[i].strip().encode("utf-8"))
+      re.append({"title": title, "body": body})
+    else:
+      re.append({"title": "No title", "body": content_split})
   return re
