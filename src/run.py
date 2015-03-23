@@ -30,4 +30,4 @@ if __name__ == "__main__":
       words.append(word)
   word_rank = words.rank()
   for rank in word_rank:
-    print "%-5d%-15s%s" % (len(rank[1]), rank[0], ",".join(rank[1]))
+    print("%-5d%-15s%s" % (len(rank[1]), rank[0], ",".join(rank[1])))
