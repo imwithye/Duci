@@ -21,8 +21,8 @@ class WordList:
     word_list = sorted(word_list, key=lambda word: len(word[1]), reverse=True)
     return word_list
 
-if __name__ == "__main__":
-  content_list = get_content_list()
+def read(dict_file):
+  content_list = get_content_list(dict_file)
   words = WordList()
   for content in content_list:
     word_list = parse(content["body"])
@@ -31,3 +31,6 @@ if __name__ == "__main__":
   word_rank = words.rank()
   for rank in word_rank:
     print("%-5d%-15s%s" % (len(rank[1]), rank[0], ",".join(rank[1])))
+
+if __name__ == "__main__":
+  read("xinqiji.txt")

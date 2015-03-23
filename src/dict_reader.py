@@ -3,8 +3,8 @@
 
 import os
 
-def get_content_list():
-  input = os.path.join(os.path.dirname(os.path.realpath(__file__)), "dict.txt")
+def get_content_list(dict_file):
+  input = os.path.join(os.path.dirname(os.path.realpath(__file__)), dict_file)
   content_file = open(input)
   content = content_file.read().decode("utf-8")
   content_file.close()
